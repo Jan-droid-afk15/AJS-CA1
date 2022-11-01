@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const app = express();
-const port = 3000;
+const port = 3030;
 require('dotenv').config();
 
 require('./utils/db.js')();

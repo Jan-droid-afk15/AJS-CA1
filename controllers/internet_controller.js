@@ -1,7 +1,7 @@
 const Internet = require('../models/internet_schema');
 
 const readData = (req, res) => {
-    Internet.find().populate("country")
+    Internet.find()
         .then((data) => {
             console.log(data);
             if(data.length > 0){
@@ -57,45 +57,30 @@ const readOne = (req, res) => {
 
 };
 
-// const createData = (req, res) => {
-//     // console.log(req.body);
-//     let internetData = req.body;
+const createData = (req, res) => {
+    // console.log(req.body);
+    let internetData = req.body;
 
-//     Internet.create(internetData)
-//         .then((data) => {
-//             console.log('New Internet Created!', data);
-//             res.status(201).json(data);
-//         })
-//         .catch((err) => {
-//             if(err.name === 'ValidationError'){
-//                 console.error('Validation Error!!', err);
-//                 res.status(422).json({
-//                     "msg": "Validation Error",
-//                     "error" : err.message 
-//                 });
-//             }
-//             else {
-//                 console.error(err);
-//                 res.status(500).json(err);
-//             }
-//         });
-
-        const createData = (req, res) => {
-            const internet = new Internet();
-            internet.country = req.body.country,
-            internet.broadband = req.body.broadband,
-            internet.mobile = req.body.mobile
-              internet.save()
-              .then((data) => {
-                console.log('New Internet Created!', data);
-                res.status(201).json(data);
-             })
-              .catch((err) => {
+    Internet.create(internetData)
+        .then((data) => {
+            console.log('New Internet Created!', data);
+            res.status(201).json(data);
+        })
+        .catch((err) => {
+            if(err.name === 'ValidationError'){
+                console.error('Validation Error!!', err);
+                res.status(422).json({
+                    "msg": "Validation Error",
+                    "error" : err.message 
+                });
+            }
+            else {
                 console.error(err);
-                res.status(500).json("Unsucccesful");
-              });
-        };
-        
+                res.status(500).json(err);
+            }
+        });
+    };
+
 
     // if(data.password.length < 6){
     //     res.status(422).json({
