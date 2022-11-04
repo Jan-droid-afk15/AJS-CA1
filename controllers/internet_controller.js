@@ -81,7 +81,6 @@ const createData = (req, res) => {
         });
     };
 
-
     // if(data.password.length < 6){
     //     res.status(422).json({
     //         "msg": "festival password must be over 6 characters"

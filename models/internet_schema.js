@@ -13,7 +13,7 @@ const internetSchema = Schema(
         mobile: {
             type: String
             
-        },
+        }
     },
     { timestamps: true }
 );
