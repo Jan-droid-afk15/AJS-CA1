@@ -2,6 +2,7 @@ const User = require('../models/user_schema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+
 const register = (req, res) => {
     let newUser = new User(req.body);
     newUser.password = bcrypt.hashSync(req.body.password, 10) 

@@ -1,3 +1,4 @@
+//File requires code from DB.js and .env to connect to my cluster in mongoDB.
 const mongoose = require('mongoose');
 const Internet = require('./models/internet_schema');
 require('dotenv').config();
@@ -25,6 +26,10 @@ const connect = async () => {
       }
   }
 };
+
+/*Function used to seed the database, 
+contains the whole json array from my dataset*/
+
 const seedInternets = [
     {
       "country": "Monaco",
@@ -913,11 +918,14 @@ const seedInternets = [
     }
   ];
 
+  /*Seeds the Database asynchronously, 
+  deletes existing records first then replaces them by inserting new records.*/
+
   const seedDB = async () => {
     await Internet.deleteMany({});
     await Internet.insertMany(seedInternets);
   };
-
+//Closes connection with DB
 seedDB().then(() => {
     mongoose.connection.close();
 });

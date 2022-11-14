@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+//Schema for Users, required in MongoDB
 const userSchema = Schema(
     {
         name: {
@@ -21,7 +22,7 @@ const userSchema = Schema(
     },
     { timestamps: true }
 );
-
+//Bcrypt hashes a user's password and encrypts them for security.
 userSchema.methods.comparePassword = function(password){
     return bcrypt.compareSync(password, this.password, function(result) {
         return result;

@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-
+//Internet Schema
 const internetSchema = Schema(
     {
         country: {

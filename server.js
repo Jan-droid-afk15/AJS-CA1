@@ -2,7 +2,9 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const app = express();
 const port = 3030;
-require('dotenv').config();
+
+//File that connects to my mongoDB cluster
+require('dotenv').config(); 
 
 require('./utils/db.js')();
 
@@ -10,6 +12,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+//Provides tokens to admins and authenticates them. Users with no tokens won't have access.
 app.use((req, res, next) => {
     // split will split the bearer and token and place it into an array
     // will run on every request
@@ -42,10 +45,11 @@ app.use((req, res, next) => {
     next();
 });
 
+//Api Routes for Insomnia testing
 app.use('/api/users', require('./routes/users'));
 app.use('/api/internets', require('./routes/internets'));
 
-
+//Message to inform user that connection is established with the database.
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

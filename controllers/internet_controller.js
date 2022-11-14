@@ -1,5 +1,5 @@
 const Internet = require('../models/internet_schema');
-
+//CRUD functions
 const readData = (req, res) => {
     Internet.find()
         .then((data) => {
@@ -26,7 +26,7 @@ const readOne = (req, res) => {
 
     let id = req.params.id;
 
-    // connect to db and retrieve festival with :id
+    // connect to db and retrieve internet with :id
     Internet.findById(id)
         .then((data) => {
 
@@ -81,18 +81,6 @@ const createData = (req, res) => {
         });
     };
 
-    // if(data.password.length < 6){
-    //     res.status(422).json({
-    //         "msg": "festival password must be over 6 characters"
-    //     });
-    // }
-    // else{
-    //     data.id = 1;
-    //     res.status(201).json({
-    //         "msg": "All good",
-    //         "data": data
-    //     });
-    // }
     
 
 const updateData = (req, res) => {
@@ -110,7 +98,7 @@ const updateData = (req, res) => {
             }
             else {
                 res.status(404).json({
-                    "message": `Festival with id: ${id} not found`
+                    "message": `Internet with id: ${id} not found`
                 });
             }
             

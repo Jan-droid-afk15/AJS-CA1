@@ -1,3 +1,4 @@
+//File that establishes a connection to mongoDB server.
 const mongoose = require('mongoose');
 
 const connect = async () => {
